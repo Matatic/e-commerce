@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import url from "../../assets/crown.svg";
 import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
 import "./Header-style.sass";
 

@@ -4,6 +4,7 @@ import {
   CreateUserDocumentFormAuth,
 } from "../../utils/firebase/firebase-utils";
 import HeaderComponent from "../../components/Header/Header-component";
+import SignUpComponent from "../../components/SignUp/SignUp-component";
 
 const SignIn = () => {
   const LogGoogleuser = async () => {
@@ -17,7 +18,8 @@ const SignIn = () => {
       <HeaderComponent />
       <div>
         <h2>Sign In page</h2>
-        <button onClick={LogGoogleuser}>Click</button>
+        <button onClick={LogGoogleuser}>Sign Up with Email pop up</button>
+        <SignUpComponent />
       </div>
     </>
   );
