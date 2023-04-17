@@ -5,6 +5,8 @@ import {
 } from "../../utils/firebase/firebase-utils";
 import HeaderComponent from "../../components/Header/Header-component";
 import SignUpComponent from "../../components/SignUp/SignUp-component";
+import SignInComponent from "../../components/SignIn/Signin.component";
+import "./SignIn.sass";
 
 const SignIn = () => {
   const LogGoogleuser = async () => {
@@ -16,9 +18,9 @@ const SignIn = () => {
   return (
     <>
       <HeaderComponent />
-      <div>
-        <h2>Sign In page</h2>
-        <button onClick={LogGoogleuser}>Sign Up with Email pop up</button>
+      <div className="auth">
+        <SignInComponent handleGoogle={LogGoogleuser} />
+        {/* <button onClick={LogGoogleuser}>Sign Up with Email pop up</button> */}
         <SignUpComponent />
       </div>
     </>
