@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
 import "./Header-style.sass";
+import { UserContext } from "../../contexts/user.context";
 
 const HeaderComponent = () => {
+  const { currentUser } = useContext(UserContext);
+  console.log("naba", currentUser);
   return (
     <div className="navigation">
       <Link className="logo-container" to="/">

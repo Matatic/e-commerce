@@ -17,7 +17,6 @@ const DefaultFieldsForm = {
 const SignUpComponent = () => {
   const [formFields, setFormFields] = useState(DefaultFieldsForm);
   const { displayName, email, password, confirmPassword } = formFields;
-  console.log("form", formFields);
   const handleChange = e => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
