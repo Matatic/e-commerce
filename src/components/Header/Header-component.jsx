@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
 import "./Header-style.sass";
 import { UserContext } from "../../contexts/user.context";
+import { signOutUser } from "../../utils/firebase/firebase-utils";
 
 const HeaderComponent = () => {
-  const { currentUser } = useContext(UserContext);
-  console.log("naba", currentUser);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const handleSubmit = async () => {
+    await signOutUser();
+    setCurrentUser(null);
+  };
   return (
     <div className="navigation">
       <Link className="logo-container" to="/">
@@ -16,9 +20,15 @@ const HeaderComponent = () => {
         <Link className="nav-link" to="/shop">
           Shop
         </Link>
-        <Link className="nav-link" to="/signin">
-          Sign In
-        </Link>
+        {currentUser ? (
+          <span onClick={handleSubmit} className="nav-link">
+            Sign Out
+          </span>
+        ) : (
+          <Link className="nav-link" to="/signin">
+            Sign In
+          </Link>
+        )}
       </div>
     </div>
   );
