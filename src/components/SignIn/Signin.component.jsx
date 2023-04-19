@@ -1,9 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase-utils";
 import FormInput from "../FormInput/Form-input.component";
 import "./Signin.style.sass";
 import Button from "../Button/Button.component";
-import { UserContext } from "../../contexts/user.context";
 
 const DefaultFieldsForm = {
   email: "",
@@ -13,7 +12,6 @@ const DefaultFieldsForm = {
 const SignInComponent = ({ handleGoogle }) => {
   const [formFields, setFormFields] = useState(DefaultFieldsForm);
   const { email, password } = formFields;
-  const { setCurrentUser } = useContext(UserContext);
   const handleChange = e => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
@@ -21,11 +19,7 @@ const SignInComponent = ({ handleGoogle }) => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const { user } = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-      setCurrentUser(user);
+      await signInAuthUserWithEmailAndPassword(email, password);
       ResetFields();
     } catch (error) {
       switch (error.code) {

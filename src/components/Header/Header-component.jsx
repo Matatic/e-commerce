@@ -7,10 +7,6 @@ import { signOutUser } from "../../utils/firebase/firebase-utils";
 
 const HeaderComponent = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
-  const handleSubmit = async () => {
-    await signOutUser();
-    setCurrentUser(null);
-  };
   return (
     <div className="navigation">
       <Link className="logo-container" to="/">
@@ -21,7 +17,7 @@ const HeaderComponent = () => {
           Shop
         </Link>
         {currentUser ? (
-          <span onClick={handleSubmit} className="nav-link">
+          <span onClick={signOutUser} className="nav-link">
             Sign Out
           </span>
         ) : (
