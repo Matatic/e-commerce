@@ -4,9 +4,13 @@ import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
 import "./Header-style.sass";
 import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase-utils";
+import CartIcon from "../CartIcon/Carticon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import { CartContext } from "../../contexts/cart.contex";
 
 const HeaderComponent = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
+  const { isCartOpen } = useContext(CartContext);
   return (
     <div className="navigation">
       <Link className="logo-container" to="/">
@@ -25,6 +29,10 @@ const HeaderComponent = () => {
             Sign In
           </Link>
         )}
+        <div>
+          <CartIcon />
+        </div>
+        {isCartOpen && <CartDropdown />}
       </div>
     </div>
   );

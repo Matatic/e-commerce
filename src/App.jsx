@@ -1,10 +1,7 @@
 import Home from "./pages/home/home";
 import { Routes, Route } from "react-router-dom";
 import SignIn from "./pages/sign/SignIn";
-
-const Shop = () => {
-  return <h2>I am shop</h2>;
-};
+import Shop from "./pages/shop/shop-page";
 
 function App() {
   return (
