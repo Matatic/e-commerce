@@ -1,23 +1,22 @@
-import React, { useContext,useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { ProductContext } from "../../contexts/product.contex";
 import Product from "../ProductCard/product.component";
 import "./shop-styles.sass";
+import CategoryPreview from "../category-preview/category-preview.component";
 
 const ShopComponent = () => {
   const { products } = useContext(ProductContext);
   return (
-    <>
-      {Object.keys(products).slice(7,19).map(title => (
-        <>
-          <h1>{title}</h1>
-          <div className="products-container">
-          {products[title].map(product => (
-              <Product product={product} key={product.id} />
-            ))}
-          </div>
-        </>
-      ))}
-    </>
+    <div className="shop-container">
+      {Object.keys(products)
+        .slice(7, 19)
+        .map(title => {
+          const product = products[title];
+          return (
+            <CategoryPreview key={title} title={title} products={product} />
+          );
+        })}
+    </div>
   );
 };
 
