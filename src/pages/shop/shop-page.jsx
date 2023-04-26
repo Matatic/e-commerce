@@ -9,6 +9,6 @@ const Shop = () => {
       <ShopComponent />
     </>
   );
-};
+}; 
 
 export default Shop;
