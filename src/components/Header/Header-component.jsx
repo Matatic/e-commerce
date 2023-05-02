@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
-import "./Header-style.sass";
+import {
+  NavigationWrapper,
+  LogoContainer,
+  NavLinks,
+  NavLink,
+} from "./Header-style";
 import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase-utils";
 import CartIcon from "../CartIcon/Carticon.component";
@@ -12,29 +17,25 @@ const HeaderComponent = () => {
   const { currentUser } = useContext(UserContext);
   const { isCartOpen } = useContext(CartContext);
   return (
-    <div className="navigation">
-      <Link className="logo-container" to="/">
+    <NavigationWrapper>
+      <LogoContainer to="/">
         <CrownLogo />
-      </Link>
-      <div className="nav-links-container">
-        <Link className="nav-link" to="/shop">
-          Shop
-        </Link>
+      </LogoContainer>
+      <NavLinks>
+        <NavLink to="/shop">Shop</NavLink>
         {currentUser ? (
-          <span onClick={signOutUser} className="nav-link">
+          <NavLink as="span" onClick={signOutUser}>
             Sign Out
-          </span>
+          </NavLink>
         ) : (
-          <Link className="nav-link" to="/signin">
-            Sign In
-          </Link>
+          <NavLink to="/signin">Sign In</NavLink>
         )}
         <div>
           <CartIcon />
         </div>
         {isCartOpen && <CartDropdown />}
-      </div>
-    </div>
+      </NavLinks>
+    </NavigationWrapper>
   );
 };
 
