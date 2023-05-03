@@ -4,12 +4,17 @@ import {
   CategoryBody,
   CategoryContainer,
 } from "./directory-style";
+import { useNavigate } from "react-router-dom";
 
 const Directory = ({ categories }) => {
-  const { title, imageUrl, id } = categories;
+  const { title, imageUrl, route } = categories;
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate(route);
+  };
   return (
     <>
-      <CategoryContainer>
+      <CategoryContainer onClick={handleNavigate}>
         <BackgroudImage imageUrl={imageUrl} />
         <CategoryBody>
           <h2>{title}</h2>
