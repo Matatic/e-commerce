@@ -11,7 +11,7 @@ const PreviewPage = () => {
       <HeaderComponent />
       <h2>{title}</h2>
       <div className="preview">
-        {products &&
+        {products && 
           products[title].map(product => (
             <Product key={product.id} product={product} />
           ))}
