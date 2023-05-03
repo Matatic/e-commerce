@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase-utils";
 import FormInput from "../FormInput/Form-input.component";
-import "./Signin.style.sass";
-import Button from "../Button/Button.component";
+import { ButtonContainer } from "./Signin.style";
+import Button, { BUTTON_CLASS_TYPES } from "../Button/Button.component";
 
 const DefaultFieldsForm = {
   email: "",
@@ -67,12 +67,16 @@ const SignInComponent = ({ handleGoogle }) => {
             value: password,
           }}
         />
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
+        <ButtonContainer>
           <Button type="submit">Sign In</Button>
-          <Button type="button" buttonType="google" onClick={handleGoogle}>
-            Sign google
+          <Button
+            type="button"
+            buttonType={BUTTON_CLASS_TYPES.google}
+            onClick={handleGoogle}
+          >
+            google
           </Button>
-        </div>
+        </ButtonContainer>
       </form>
     </div>
   );
